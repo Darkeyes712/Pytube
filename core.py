@@ -14,7 +14,6 @@ class Downloader_YT(YouTube):
         Function downloads the video in MP4 format, using the highest resolution. 
         If no path is specifed at the download() function, it will download the file to the script folder.
         """
-
         self.you_tube.streams.get_highest_resolution().download(path)
 
     def download_lowest_resolution(self, path=None):
@@ -29,7 +28,6 @@ class Downloader_YT(YouTube):
         Function downloads the video in MP3 format. 
         If no path is specifed at the download() function, it will download the file to the script folder.
         """
-
         self.you_tube.streams.get_audio_only().download(path)
 
     @staticmethod

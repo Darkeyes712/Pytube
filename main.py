@@ -64,7 +64,6 @@ def download_audio_only():
     d.rename_download(new_file_name=f"{new_file_name}.mp4", folder="Audio")
     d.convert_mp4_to_mp3(mp4=os.path.join(os.getcwd(), f"Audio\\done\\{new_file_name}.mp4"), mp3=os.path.join(os.getcwd(), f"Audio\\done\\{new_file_name}.mp3"))
     
-
 # Feature buttons
 button_clear= Button(window,
                     background="gray",
@@ -137,7 +136,6 @@ button_options = Button(window,
                         relx=0.9, 
                         rely=0.1, 
                         anchor=CENTER)
-
 
 # This is essential to keep the window open:
 window.mainloop()
