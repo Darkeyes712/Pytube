@@ -11,29 +11,31 @@ window.geometry("800x600")
 window.resizable(0, 0)
 # title of the program
 window.title("Kolzo's YouTube Downloader")
-
-
-# Images
+# Background image
 photo = PhotoImage(file="img/bg.png")
 photoimage = photo.subsample(1, 1)
-###
+# Options menu image
 options = PhotoImage(file="img/g.png")
 photoimage_options = options.subsample(1, 1)
-
-# Background
+# Assigning background
 frame_logo = Label(window, image=photoimage).place(anchor=CENTER, relx=0.5, rely=0.5,)
-
+# Assining string variables
 video_link = StringVar()
-destination_path = StringVar()
-
-def clear_text():
-    entry_field.delete(0, END)
-
+#destination_path = StringVar() # this may be needed later on
+# Creating the Entry field
 entry_field = Entry(window, width=70, borderwidth=10, textvariable=video_link)
 entry_field.place(relx=0.5, rely=0.7, anchor=CENTER)
 
+def clear_text():
+    """
+    Function clears the entry filed of all text once the Clear Filed button is pressed.
+    """
+    entry_field.delete(0, END)
+
 def download_high_resolution():
-    
+    """
+    Function ivokes the Downloader class and adds the high resolution functionality to the corresponding button.
+    """
     url = str(video_link.get())
     c = Configs()
     d = Downloader_YT(url)
@@ -41,7 +43,9 @@ def download_high_resolution():
     d.rename_download(new_file_name=f"converted_high_{c.random_id_generator()}.mp4", folder="Video_High")
 
 def download_low_resolution():
-
+    """
+    Function ivokes the Downloader class and adds the low resolution functionality to the corresponding button.
+    """
     url = str(video_link.get())
     c = Configs()
     d = Downloader_YT(url)
@@ -49,7 +53,9 @@ def download_low_resolution():
     d.rename_download(new_file_name=f"converted_low_{c.random_id_generator()}.mp4", folder="Video_Low")
 
 def download_audio_only():
-
+    """
+    Function ivokes the Downloader class and adds the audio only functionality to the corresponding button.
+    """
     url = str(video_link.get())
     c = Configs()
     d = Downloader_YT(url)

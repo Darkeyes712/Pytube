@@ -41,7 +41,6 @@ class Downloader_YT(YouTube):
 
         filenames = next(walk(os.path.join(os.getcwd(), f"{folder}")), (None, None, []))[2]  # [] if no file
         file = ''.join(filenames)
-
         os.rename(os.path.join(os.getcwd(), f"{folder}\\{file}"), os.path.join(os.getcwd(), f"{folder}\\{new_file_name}"))
 
         file_to_move = os.path.join(os.getcwd(), f"{folder}\\{new_file_name}")
