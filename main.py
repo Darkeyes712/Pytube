@@ -32,6 +32,15 @@ def clear_text():
     """
     entry_field.delete(0, END)
 
+def get_video_info():
+    """
+    Function ivokes the Downloader class and adds the get information functionality to the corresponding button.
+    """
+    url = str(video_link.get())
+    d = Downloader_YT(url)
+    
+    return d.get_video_information()
+
 def download_high_resolution():
     """
     Function ivokes the Downloader class and adds the high resolution functionality to the corresponding button.
@@ -63,8 +72,24 @@ def download_audio_only():
     d.download_audio_only(os.path.join(os.getcwd(), "Audio"))
     d.rename_download(new_file_name=f"{new_file_name}.mp4", folder="Audio")
     d.convert_mp4_to_mp3(mp4=os.path.join(os.getcwd(), f"Audio\\done\\{new_file_name}.mp4"), mp3=os.path.join(os.getcwd(), f"Audio\\done\\{new_file_name}.mp3"))
-    
+
+
+
 # Feature buttons
+button_info= Button(window,
+                    background="gray",
+                    text="Get Info",
+                    width=10, 
+                    height=1, 
+                    padx=3, 
+                    pady=1, 
+                    font=("Arial", 12, "bold"),
+                    anchor=CENTER,
+                    command=lambda: messagebox.showinfo("Video Information", f"{get_video_info()}")
+                    ).place(
+                        relx=0.4, 
+                        rely=0.8, 
+                        anchor=CENTER)
 button_clear= Button(window,
                     background="gray",
                     text="Clear Field",
@@ -76,7 +101,7 @@ button_clear= Button(window,
                     anchor=CENTER,
                     command=clear_text
                     ).place(
-                        relx=0.5, 
+                        relx=0.6, 
                         rely=0.8, 
                         anchor=CENTER)
 button_hq= Button(window,

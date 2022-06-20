@@ -30,6 +30,14 @@ class Downloader_YT(YouTube):
         """
         self.you_tube.streams.get_audio_only().download(path)
 
+    def get_video_information(self):
+        """
+        Get information on the current video. 
+        """
+        return f'Title: {self.you_tube.title}\n{self.you_tube.length / 60} minutes \n{self.you_tube.views} views\nThe author is: {self.you_tube.author}\n{self.you_tube.description}'
+
+
+    # Approach using specific folders for file downloads
     @staticmethod
     def rename_download(new_file_name, folder):
         """
@@ -65,3 +73,11 @@ class Downloader_YT(YouTube):
                 os.remove(file)
         os.chdir(cur_dir)
 
+    # Approach using the tkinter specific download function for file downloads
+    @staticmethod
+    def convert_mp4_to_mp3_clone(mp4=None, mp3=None):
+        pass
+
+
+# d = Downloader_YT('https://www.youtube.com/watch?v=IYNO5-8kC5U&list=RDIYNO5-8kC5U&start_radio=1')
+# print(d.get_video_information())
