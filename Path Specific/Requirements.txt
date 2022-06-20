@@ -1,4 +1,0 @@
-Here you need 6 folders: 
-Audio/done
-Video_High/done
-Video_Low/done
