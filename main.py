@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
+from tkinter import filedialog
 from core import *
 from config import *
 
@@ -21,6 +22,7 @@ photoimage_options = options.subsample(1, 1)
 frame_logo = Label(window, image=photoimage).place(anchor=CENTER, relx=0.5, rely=0.5,)
 # Assining string variables
 video_link = StringVar()
+download_path = StringVar()
 #destination_path = StringVar() # this may be needed later on
 # Creating the Entry field
 entry_field = Entry(window, width=70, borderwidth=10, textvariable=video_link)
@@ -44,36 +46,41 @@ def get_video_info():
 def download_high_resolution():
     """
     Function ivokes the Downloader class and adds the high resolution functionality to the corresponding button.
+    Function asks for user to choose a download path and the file gets downloaded there.
     """
     url = str(video_link.get())
-    c = Configs()
     d = Downloader_YT(url)
-    d.download_highest_resolution(os.path.join(os.getcwd(), "Video_High"))
-    d.rename_download(new_file_name=f"converted_high_{c.random_id_generator()}.mp4", folder="Video_High")
+    download_directory = filedialog.askdirectory(initialdir="Input File Path Here")
+    download_path.set(download_directory)
+    d.download_highest_resolution(download_path.get())
+
+    return messagebox.showinfo("Success!", "Video file has been downloaded!")
 
 def download_low_resolution():
     """
     Function ivokes the Downloader class and adds the low resolution functionality to the corresponding button.
+    Function asks for user to choose a download path and the file gets downloaded there.
     """
     url = str(video_link.get())
-    c = Configs()
     d = Downloader_YT(url)
-    d.download_lowest_resolution(os.path.join(os.getcwd(), "Video_Low"))
-    d.rename_download(new_file_name=f"converted_low_{c.random_id_generator()}.mp4", folder="Video_Low")
+    download_directory = filedialog.askdirectory(initialdir="Input File Path Here")
+    download_path.set(download_directory)
+    d.download_lowest_resolution(download_path.get())
+
+    return messagebox.showinfo("Success!", "Video file has been downloaded!")
 
 def download_audio_only():
     """
     Function ivokes the Downloader class and adds the audio only functionality to the corresponding button.
+    Function asks for user to choose a download path and the file gets downloaded there.
     """
     url = str(video_link.get())
-    c = Configs()
     d = Downloader_YT(url)
-    new_file_name = f"converted_{c.random_id_generator()}"
-    d.download_audio_only(os.path.join(os.getcwd(), "Audio"))
-    d.rename_download(new_file_name=f"{new_file_name}.mp4", folder="Audio")
-    d.convert_mp4_to_mp3(mp4=os.path.join(os.getcwd(), f"Audio\\done\\{new_file_name}.mp4"), mp3=os.path.join(os.getcwd(), f"Audio\\done\\{new_file_name}.mp3"))
+    download_directory = filedialog.askdirectory(initialdir="Input File Path Here")
+    download_path.set(download_directory)
+    d.download_audio_only(download_path.get())
 
-
+    return messagebox.showinfo("Success!", "Audio file has been downloaded!")
 
 # Feature buttons
 button_info= Button(window,
