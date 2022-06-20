@@ -62,12 +62,9 @@ Description here.
 
 Below you can find a list of all major frameworks/libraries used to bootstrap this project:
 
-BACKEND
 * [Python](https://www.python.org/)
 * [Pytube](link_here)
-FRONTEND
 * [Tkinter](link_here)
-INFRASTRUCTURE
 * [Pyinstaller](link_here)
 
 
