@@ -98,11 +98,9 @@ Some text:
   ```
   Note: .....................
 
-_For more information on Python, please refer to the [Documentation](https://docs.python.org/3/)_
-_For more information on HTML, please refer to the [Documentation](https://devdocs.io/html/)_
-_For more information on CSS, please refer to the [Documentation](https://devdocs.io/css/)_
-_For more information on JavaScript, please refer to the [Documentation](https://devdocs.io/javascript/)_
-_For more information on Flask, please refer to the [Documentation](https://flask.palletsprojects.com/en/2.1.x/)_
+_For more information on Python, please refer to the [Documentation](link_here)
+_For more information on Tkinter, please refer to the [Documentation](link_here)
+_For more information on Pytube, please refer to the [Documentation](link_here)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
