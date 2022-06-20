@@ -84,7 +84,7 @@ def download_audio_only():
 
 # Feature buttons
 button_info= Button(window,
-                    background="gray",
+                    background="silver",
                     text="Get Info",
                     width=10, 
                     height=1, 
@@ -98,7 +98,7 @@ button_info= Button(window,
                         rely=0.8, 
                         anchor=CENTER)
 button_clear= Button(window,
-                    background="gray",
+                    background="silver",
                     text="Clear Field",
                     width=10, 
                     height=1, 
