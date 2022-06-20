@@ -38,8 +38,7 @@
         <li><a href="#prerequisites">Prerequisites</a></li>
       </ul>
     </li>
-    <li><a href="#code">Code-Setup</a></li>
-    <li><a href="#infrastructure">Server-Setup</a></li>
+    <li><a href="#code">Project-Setup</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -80,11 +79,11 @@ Below you can find a list of all major frameworks/libraries used to bootstrap th
 
 
 <!-- Code -->
-## Code-Setup
+## Project-Setup
 
 Here is how to build the application using pyinstaller: 
 
-1. Title_1:
+1. Getting the project ready:
 Some text: 
   ```sh
   instructions instructions
