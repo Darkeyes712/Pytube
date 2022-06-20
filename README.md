@@ -138,7 +138,7 @@ Distributed under the BSD 3-Clause License. See `LICENSE.txt` for more informati
 <!-- CONTACT -->
 ## Contact
 
-Nikola Kolev- nkolev21@tlp-arc-entertainment.com / nikolakolev712@gmail.com
+Nikola Kolev - nikolakolev712@gmail.com
 
 Project Link: [https://github.com/Darkeyes712/Pytube](https://github.com/Darkeyes712/Pytube)
 
