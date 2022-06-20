@@ -82,7 +82,7 @@ Below you can find a list of all major frameworks/libraries used to bootstrap th
 <!-- Code -->
 ## Code-Setup
 
-Here is how the framework actually functions: 
+Here is how to build the application using pyinstaller: 
 
 1. Title_1:
 Some text: 
