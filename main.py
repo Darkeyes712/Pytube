@@ -1,8 +1,10 @@
 from tkinter import *
 from tkinter import messagebox
 from tkinter import filedialog
-from core import *
+from core import Downloader_YT
 from config import *
+from thread_frm import KThread
+
 
 # this shit creates the window
 window = Tk()
@@ -27,6 +29,8 @@ download_path = StringVar()
 # Creating the Entry field
 entry_field = Entry(window, width=70, borderwidth=10, textvariable=video_link)
 entry_field.place(relx=0.5, rely=0.7, anchor=CENTER)
+#Adding software icon
+window.iconbitmap('img/burglar.ico')
 
 def clear_text():
     """
@@ -52,9 +56,11 @@ def download_high_resolution():
     d = Downloader_YT(url)
     download_directory = filedialog.askdirectory(initialdir="Input File Path Here")
     download_path.set(download_directory)
-    d.download_highest_resolution(download_path.get())
 
-    return messagebox.showinfo("Success!", "Video file has been downloaded!")
+    thread = KThread(target = d.download_highest_resolution, daemon=True, kwargs={'path': download_path.get()})
+    thread.start()
+
+    return messagebox.showinfo("In Progress!", f"Video file will be downloaded in {download_path.get()}!")
 
 def download_low_resolution():
     """
@@ -65,9 +71,11 @@ def download_low_resolution():
     d = Downloader_YT(url)
     download_directory = filedialog.askdirectory(initialdir="Input File Path Here")
     download_path.set(download_directory)
-    d.download_lowest_resolution(download_path.get())
 
-    return messagebox.showinfo("Success!", "Video file has been downloaded!")
+    thread = KThread(target = d.download_lowest_resolution, daemon=True, kwargs={'path': download_path.get()})
+    thread.start()
+
+    return messagebox.showinfo("In Progress!", f"Video file will be downloaded in {download_path.get()}!")
 
 def download_audio_only():
     """
@@ -78,9 +86,11 @@ def download_audio_only():
     d = Downloader_YT(url)
     download_directory = filedialog.askdirectory(initialdir="Input File Path Here")
     download_path.set(download_directory)
-    d.download_audio_only(download_path.get())
 
-    return messagebox.showinfo("Success!", "Audio file has been downloaded!")
+    thread = KThread(target = d.download_audio_only, daemon=True, kwargs={'path': download_path.get()})
+    thread.start()
+
+    return messagebox.showinfo("In Progress!", f"Audio file will be downloaded in {download_path.get()}!")
 
 # Feature buttons
 button_info= Button(window,

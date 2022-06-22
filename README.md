@@ -83,20 +83,14 @@ Below you can find a list of all major frameworks/libraries used to bootstrap th
 
 Here is how to build the application using pyinstaller: 
 
-1. Getting the project ready:
-Some text: 
-  ```sh
-  instructions instructions
+1. Open GitBash in the directory where the project is located: 
   ```
-  1.1. You call the classs class using the: 
-  ```sh
-    instructions instructions
+  pyinstaller --noconsole --icon=Pytube/img/burglar.ico Pytube/main.py
   ```
-  1.2. To check a specific config file: 
+  1.1. 
   ```sh
-    instructions instructions = "instructions instructions"
+    Copy the img folder to the dist/main path
   ```
-  Note: .....................
 
 _For more information on Python, please refer to the [Documentation](link_here)
 _For more information on Tkinter, please refer to the [Documentation](link_here)
