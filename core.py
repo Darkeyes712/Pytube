@@ -1,6 +1,7 @@
 from pytube import YouTube
 from os import *
-#from moviepy.editor import *
+import os
+from moviepy.editor import AudioFileClip
 import shutil
 
 class Downloader_YT(YouTube):
@@ -53,25 +54,25 @@ class Downloader_YT(YouTube):
         dest = os.path.join(os.getcwd(), f"{folder}\\done\\{new_file_name}")
         shutil.move(file_to_move, dest)
 
-    # @staticmethod
-    # def convert_mp4_to_mp3(mp4=None, mp3=None):
-    #     """
-    #     Convert the mp4 file to an mp3 format. 
-    #     Delete the mp4 file.
-    #     """
-    #     cur_dir = os.getcwd()
-    #     directory = os.path.join(os.getcwd(), "Audio\\done")
+    @staticmethod
+    def convert_mp4_to_mp3(mp4=None, mp3=None):
+        """
+        Convert the mp4 file to an mp3 format. 
+        Delete the mp4 file.
+        """
+        cur_dir = os.getcwd()
+        directory = os.path.join(os.getcwd(), "Audio\\done")
 
-    #     mp4_without_frames = AudioFileClip(mp4)   
-    #     mp4_without_frames.write_audiofile(mp3)
-    #     mp4_without_frames.close()
+        mp4_without_frames = AudioFileClip(mp4)   
+        mp4_without_frames.write_audiofile(mp3)
+        mp4_without_frames.close()
 
-    #     os.chdir(directory)
-    #     all_files = os.listdir()
-    #     for file in all_files:
-    #         if file.endswith('mp4'):
-    #             os.remove(file)
-    #     os.chdir(cur_dir)
+        os.chdir(directory)
+        all_files = os.listdir()
+        for file in all_files:
+            if file.endswith('mp4'):
+                os.remove(file)
+        os.chdir(cur_dir)
 
     
 
