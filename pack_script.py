@@ -12,7 +12,6 @@ def pack():
     destination_dir = os.path.join(os.getcwd(), 'dist', 'youtube_downloader', 'img')
     shutil.copytree(source_dir, destination_dir)
 
-
 def shortcut():
     desktop = winshell.desktop()
     path = os.path.join(desktop, "youtube_downloader.lnk")
@@ -26,7 +25,6 @@ def shortcut():
     shortcut.WorkingDirectory = wDir
     shortcut.IconLocation = icon
     shortcut.save()
-
 
 
 
