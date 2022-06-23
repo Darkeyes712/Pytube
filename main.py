@@ -4,8 +4,7 @@ from tkinter import filedialog
 from core import Downloader_YT
 from config import *
 from thread_frm import KThread
-import os
-import subprocess
+import time
 
 
 # this shit creates the window
@@ -91,11 +90,9 @@ def download_audio_only():
 
     thread = KThread(target = d.download_audio_only, daemon=True, kwargs={'path': download_path.get()})
     thread.start()
-
+    
     messagebox.showinfo("In Progress!", f"Audio file will be downloaded in {download_path.get()}")
 
-    file_name = d.get_content_name()
-    d.convert_mp4_to_mp3(file_name, download_path.get())
 
 
 # Feature buttons

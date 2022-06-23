@@ -30,6 +30,8 @@ class Downloader_YT(YouTube):
         If no path is specifed at the download() function, it will download the file to the script folder.
         """
         self.you_tube.streams.get_audio_only().download(path)
+        file_name = self.get_content_name()
+        self.convert_mp4_to_mp3(file_name, path)
 
     def get_content_name(self):
         """
@@ -81,10 +83,15 @@ class Downloader_YT(YouTube):
 
     @staticmethod
     def convert_mp4_to_mp3(file, path_):
-
+        """
+        Function takes 2 arguments:
+            file - the name of the file.
+            path_ = the file path where the file is downloaded.
+        Function converts the mp4 file to mp3 and deletes all mp4 files from the folder. 
+        """
         current_path = os.path.abspath(path_)
         os.chdir(current_path)
-        
+
         # Testing
         cwd = os.getcwd()
         print(str(cwd))
@@ -102,12 +109,8 @@ class Downloader_YT(YouTube):
         mp4_without_frames = AudioFileClip(os.path.join(current_path, old_file))   
         mp4_without_frames.write_audiofile(os.path.join(current_path, new_file))
         mp4_without_frames.close()
+        os.remove(old_file)
 
-        all_files = os.listdir()
-        for file in all_files:
-            if file.endswith('mp4'):
-                os.remove(file)
-        os.chdir(current_path)
         
         
         
