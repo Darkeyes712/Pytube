@@ -83,13 +83,9 @@ Below you can find a list of all major frameworks/libraries used to bootstrap th
 
 Here is how to build the application using pyinstaller: 
 
-1. Open GitBash in the directory where the project is located: 
+1. Open a powershell window (SHIT + Righ Mouse Button) in the directory where the project is located and type the command: 
   ```
-  pyinstaller --noconsole --icon=Pytube/img/burglar.ico Pytube/main.py
-  ```
-  1.1. 
-  ```sh
-    Copy the img folder to the dist/main path
+  python -m pack_script
   ```
 
 _For more information on Python, please refer to the [Documentation](link_here)
