@@ -4,6 +4,8 @@ from tkinter import filedialog
 from core import Downloader_YT
 from config import *
 from thread_frm import KThread
+import os
+import subprocess
 
 
 # this shit creates the window
@@ -60,7 +62,7 @@ def download_high_resolution():
     thread = KThread(target = d.download_highest_resolution, daemon=True, kwargs={'path': download_path.get()})
     thread.start()
 
-    return messagebox.showinfo("In Progress!", f"Video file will be downloaded in {download_path.get()}!")
+    return messagebox.showinfo("In Progress!", f"Video file will be downloaded in {download_path.get()}")
 
 def download_low_resolution():
     """
@@ -75,7 +77,7 @@ def download_low_resolution():
     thread = KThread(target = d.download_lowest_resolution, daemon=True, kwargs={'path': download_path.get()})
     thread.start()
 
-    return messagebox.showinfo("In Progress!", f"Video file will be downloaded in {download_path.get()}!")
+    return messagebox.showinfo("In Progress!", f"Video file will be downloaded in {download_path.get()}")
 
 def download_audio_only():
     """
@@ -90,7 +92,11 @@ def download_audio_only():
     thread = KThread(target = d.download_audio_only, daemon=True, kwargs={'path': download_path.get()})
     thread.start()
 
-    return messagebox.showinfo("In Progress!", f"Audio file will be downloaded in {download_path.get()}!")
+    messagebox.showinfo("In Progress!", f"Audio file will be downloaded in {download_path.get()}")
+
+    file_name = d.get_content_name()
+    d.convert_mp4_to_mp3(file_name, download_path.get())
+
 
 # Feature buttons
 button_info= Button(window,

@@ -31,16 +31,21 @@ class Downloader_YT(YouTube):
         """
         self.you_tube.streams.get_audio_only().download(path)
 
+    def get_content_name(self):
+        """
+        Function gets the file name and returns a string.
+        """
+        return str(self.you_tube.streams.first().default_filename)
+
     def get_video_information(self):
         """
         Get information on the current video. 
         """
         return f'Title: {self.you_tube.title}\n{self.you_tube.length / 60} minutes \n{self.you_tube.views} views\nThe author is: {self.you_tube.author}\n{self.you_tube.description}'
 
-
     # Approach using specific folders for file downloads
     @staticmethod
-    def rename_download(new_file_name, folder):
+    def rename_download_for_backend_version(new_file_name, folder):
         """
         Rename the downloaded resourse to a default name.
         Move the renamed files to the done folder.
@@ -55,7 +60,7 @@ class Downloader_YT(YouTube):
         shutil.move(file_to_move, dest)
 
     @staticmethod
-    def convert_mp4_to_mp3(mp4=None, mp3=None):
+    def convert_mp4_to_mp3_for_backend_version(mp4=None, mp3=None):
         """
         Convert the mp4 file to an mp3 format. 
         Delete the mp4 file.
@@ -74,7 +79,43 @@ class Downloader_YT(YouTube):
                 os.remove(file)
         os.chdir(cur_dir)
 
-    
+    @staticmethod
+    def convert_mp4_to_mp3(file, path_):
+
+        current_path = os.path.abspath(path_)
+        os.chdir(current_path)
+        
+        # Testing
+        cwd = os.getcwd()
+        print(str(cwd))
+
+        base, ext = os.path.splitext(file)
+        old_file = base + '.mp4'
+        # Testing
+        print(old_file)
+
+        base, ext = os.path.splitext(file)
+        new_file = base + '.mp3'
+        # Testing
+        print(new_file)
+        
+        mp4_without_frames = AudioFileClip(os.path.join(current_path, old_file))   
+        mp4_without_frames.write_audiofile(os.path.join(current_path, new_file))
+        mp4_without_frames.close()
+
+        all_files = os.listdir()
+        for file in all_files:
+            if file.endswith('mp4'):
+                os.remove(file)
+        os.chdir(current_path)
+        
+        
+        
+        
+        
+        
+
+
 
 # d = Downloader_YT('https://www.youtube.com/watch?v=IYNO5-8kC5U&list=RDIYNO5-8kC5U&start_radio=1')
 # print(d.get_video_information())
