@@ -1,4 +1,4 @@
-from pytube import YouTube
+from pytube import YouTube, Playlist
 from os import *
 import os
 from moviepy.editor import AudioFileClip
@@ -6,9 +6,9 @@ import shutil
 
 class Downloader_YT(YouTube):
 
-    def __init__(self, link=None) -> None:
+    def __init__(self, video_link=None) -> None:
         self.link = link
-        self.you_tube = YouTube(link)
+        self.you_tube = YouTube(video_link)
 
     def download_highest_resolution(self, path=None):
         """
@@ -120,5 +120,5 @@ class Downloader_YT(YouTube):
 
 
 
-# d = Downloader_YT('https://www.youtube.com/watch?v=IYNO5-8kC5U&list=RDIYNO5-8kC5U&start_radio=1')
-# print(d.get_video_information())
+# d = Downloader_YT(playlist_link='https://www.youtube.com/playlist?list=PLU01G0k1_PKe3LKxgAaIAp9rSvMSevRhQ')
+# d.download_playlist_items_high_resolution()

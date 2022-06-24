@@ -4,8 +4,6 @@ from tkinter import filedialog
 from core import Downloader_YT
 from config import *
 from thread_frm import KThread
-import time
-
 
 # this shit creates the window
 window = Tk()
