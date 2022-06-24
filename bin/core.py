@@ -110,15 +110,3 @@ class Downloader_YT(YouTube):
         mp4_without_frames.write_audiofile(os.path.join(current_path, new_file))
         mp4_without_frames.close()
         os.remove(old_file)
-
-        
-        
-        
-        
-        
-        
-
-
-
-# d = Downloader_YT(playlist_link='https://www.youtube.com/playlist?list=PLU01G0k1_PKe3LKxgAaIAp9rSvMSevRhQ')
-# d.download_playlist_items_high_resolution()
