@@ -149,10 +149,12 @@ class Downloader_YT_Playlist(Playlist):
         Get information for every video of the playlist. 
         """
         for i in self.playlist.videos:
-            items = f'Title: {i.title}\n{i.length / 60} minutes \n{i.views} views\nThe author is: {i.author}\n{i.description}'
-            # list_items = items.split()
-            # list_of_strings = [''.join(i) for i in list_items]
-    
+            
+        #     items = f'Title: {i.title}\n{i.length / 60} minutes \n{i.views} views\nThe author is: {i.author}\n{i.description}'
+        #     list_items = items.split()
+        #     list_of_strings = [''.join(i) for i in list_items]
+
+        # return [list_of_strings[0], list_of_strings[1], list_of_strings[2]]
 
     ### NOTE make this so that it returns the info for all videos, not only 1!!!
 
