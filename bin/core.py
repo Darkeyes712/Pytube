@@ -1,4 +1,5 @@
-from pytube import YouTube
+from telnetlib import DO
+from pytube import YouTube, Playlist
 from os import *
 import os
 from moviepy.editor import AudioFileClip
@@ -6,9 +7,10 @@ import shutil
 
 class Downloader_YT(YouTube):
 
-    def __init__(self, video_link=None) -> None:
-        self.link = link
+    def __init__(self, video_link=None, playlist_link=None) -> None:
+
         self.you_tube = YouTube(video_link)
+        self.playlist = Playlist(playlist_link)
 
     def download_highest_resolution(self, path=None):
         """
@@ -110,3 +112,49 @@ class Downloader_YT(YouTube):
         mp4_without_frames.write_audiofile(os.path.join(current_path, new_file))
         mp4_without_frames.close()
         os.remove(old_file)
+
+
+class Downloader_YT_Playlist(Playlist):
+
+    def __init__(self, playlist_link=None) -> None:
+
+        self.playlist = Playlist(playlist_link)
+
+    def download_all_content_from_playlist_in_high_quality(self, path=None):
+        """
+        Function downloads all videos from a playlist in the highest possible resolution. 
+        If no path is specifed at the download() function, it will download the file to the script folder.
+        """
+        for i in self.playlist.videos:
+            i.streams.get_highest_resolution().download(path)
+        
+    def download_all_content_from_playlist_in_low_quality(self, path=None):
+        """
+        Function downloads all videos from a playlist in the lowest possible resolution. 
+        If no path is specifed at the download() function, it will download the file to the script folder.
+        """
+        for i in self.playlist.videos:
+            i.streams.get_lowest_resolution().download(path)
+
+    def download_all_content_from_playlist_in_mp3(self, path=None):
+        """
+        Function downloads all videos from a playlist in audio format then convert them to mp3. 
+        If no path is specifed at the download() function, it will download the file to the script folder.
+        """
+        for i in self.playlist.videos:
+            i.streams.get_audio_only().download(path)
+            file_name = i.streams.first().default_filename
+            Downloader_YT.convert_mp4_to_mp3(file_name, path)
+        
+    def get_playlist_info(self):
+        """
+        Get information for every video of the playlist. 
+        """
+        for i in self.playlist.videos:
+            return f'Title: {i.title}\n{i.length / 60} minutes \n{i.views} views\nThe author is: {i.author}\n{i.description}'
+
+
+
+
+# c = Downloader_YT_Playlist(playlist_link='https://www.youtube.com/playlist?list=PLU01G0k1_PKe3LKxgAaIAp9rSvMSevRhQ')
+# c.download_all_content_from_playlist_in_mp3()

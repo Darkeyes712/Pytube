@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 from tkinter import filedialog
-from core import Downloader_YT
+from core import Downloader_YT, Downloader_YT_Playlist
 from config import *
 from thread_frm import KThread
 
@@ -43,8 +43,17 @@ def get_video_info():
     """
     url = str(video_link.get())
     d = Downloader_YT(url)
-    
+
     return d.get_video_information()
+
+def get_playlist_info():
+    """
+    Function ivokes the Downloader_Playlist class and adds the get information functionality to the corresponding button.
+    """
+    url = str(video_link.get())
+    d = Downloader_YT_Playlist(url)
+    
+    return d.get_playlist_info()
 
 def download_high_resolution():
     """
@@ -91,13 +100,56 @@ def download_audio_only():
     
     messagebox.showinfo("In Progress!", f"Audio file will be downloaded in {download_path.get()}")
 
+def download_playlist_high_resolution():
+    """
+    Function ivokes the Downloader class and adds the high resolution functionality to the corresponding button.
+    Function asks for user to choose a download path and the file gets downloaded there.
+    """
+    url = str(video_link.get())
+    d = Downloader_YT_Playlist(url)
+    download_directory = filedialog.askdirectory(initialdir="Input File Path Here")
+    download_path.set(download_directory)
 
+    thread = KThread(target = d.download_all_content_from_playlist_in_high_quality, daemon=True, kwargs={'path': download_path.get()})
+    thread.start()
+
+    return messagebox.showinfo("In Progress!", f"Video file will be downloaded in {download_path.get()}")
+
+def download_playlist_low_resolution():
+    """
+    Function ivokes the Downloader class and adds the low resolution functionality to the corresponding button.
+    Function asks for user to choose a download path and the file gets downloaded there.
+    """
+    url = str(video_link.get())
+    d = Downloader_YT_Playlist(url)
+    download_directory = filedialog.askdirectory(initialdir="Input File Path Here")
+    download_path.set(download_directory)
+
+    thread = KThread(target = d.download_all_content_from_playlist_in_low_quality, daemon=True, kwargs={'path': download_path.get()})
+    thread.start()
+
+    return messagebox.showinfo("In Progress!", f"Video file will be downloaded in {download_path.get()}")
+
+def download_playlist_audio_only():
+    """
+    Function ivokes the Downloader class and adds the audio only functionality to the corresponding button.
+    Function asks for user to choose a download path and the file gets downloaded there.
+    """
+    url = str(video_link.get())
+    d = Downloader_YT_Playlist(url)
+    download_directory = filedialog.askdirectory(initialdir="Input File Path Here")
+    download_path.set(download_directory)
+
+    thread = KThread(target = d.download_all_content_from_playlist_in_mp3, daemon=True, kwargs={'path': download_path.get()})
+    thread.start()
+    
+    messagebox.showinfo("In Progress!", f"Audio file will be downloaded in {download_path.get()}")
 
 # Feature buttons
 button_info= Button(window,
                     background="silver",
-                    text="Get Info",
-                    width=10, 
+                    text="Get Video Info",
+                    width=15, 
                     height=1, 
                     padx=3, 
                     pady=1, 
@@ -105,7 +157,21 @@ button_info= Button(window,
                     anchor=CENTER,
                     command=lambda: messagebox.showinfo("Video Information", f"{get_video_info()}")
                     ).place(
-                        relx=0.4, 
+                        relx=0.3, 
+                        rely=0.8, 
+                        anchor=CENTER)
+button_playlist_info= Button(window,
+                    background="silver",
+                    text="Get Playlist Info",
+                    width=15, 
+                    height=1, 
+                    padx=3, 
+                    pady=1, 
+                    font=("Arial", 12, "bold"),
+                    anchor=CENTER,
+                    command=lambda: messagebox.showinfo("Playlist Information", f"{get_playlist_info()}")
+                    ).place(
+                        relx=0.7, 
                         rely=0.8, 
                         anchor=CENTER)
 button_clear= Button(window,
@@ -119,7 +185,7 @@ button_clear= Button(window,
                     anchor=CENTER,
                     command=clear_text
                     ).place(
-                        relx=0.6, 
+                        relx=0.5, 
                         rely=0.8, 
                         anchor=CENTER)
 button_hq= Button(window,
@@ -164,8 +230,48 @@ button_mp3 = Button(window,
                         relx=0.7, 
                         rely=0.9, 
                         anchor=CENTER)
-
-# Options button
+button_playlist_hq = Button(window,
+                    background="gray",
+                    text="Playlist High Quality",
+                    width=15, 
+                    height=3, 
+                    padx=3, 
+                    pady=1,
+                    font=("Arial", 12, "bold"), 
+                    anchor=CENTER, 
+                    command=download_playlist_high_resolution
+                    ).place(
+                        relx=0.2, 
+                        rely=0.3, 
+                        anchor=CENTER)
+button_playlist_lq = Button(window,
+                    background="gray",
+                    text="Playlist Low Quality",
+                    width=15, 
+                    height=3, 
+                    padx=3, 
+                    pady=1,
+                    font=("Arial", 12, "bold"), 
+                    anchor=CENTER, 
+                    command=download_playlist_low_resolution
+                    ).place(
+                        relx=0.5, 
+                        rely=0.3, 
+                        anchor=CENTER)
+button_playlist_mp3 = Button(window,
+                    background="gray",
+                    text="Playlist MP3",
+                    width=15, 
+                    height=3, 
+                    padx=3, 
+                    pady=1,
+                    font=("Arial", 12, "bold"), 
+                    anchor=CENTER, 
+                    command=download_playlist_audio_only
+                    ).place(
+                        relx=0.8, 
+                        rely=0.3, 
+                        anchor=CENTER)
 button_options = Button(window,
                     background="gray",
                     image=photoimage_options,
@@ -174,7 +280,12 @@ button_options = Button(window,
                     padx=3, 
                     pady=1, 
                     anchor=CENTER, 
-                    command=lambda: messagebox.showerror("Not Yet, Moron!", "Feature is under construction!")
+                    command=lambda: messagebox.showinfo("Information Below!", 
+                        "The Playlist buttons work only with a link for the playlist itself.\n\n"\
+                        "The Regular buttons work with a link to a single video only.\n\n"\
+                        "The Clear field button removes any text from the Entry field.\n\n"\
+                        "The Get Video Info button provides all information for a single video.\n\n"\
+                        "The Get Playlist Info button provides all information for all the videos in a playlist.\n\n")
                     ).place(
                         relx=0.9, 
                         rely=0.1, 
