@@ -113,7 +113,6 @@ class Downloader_YT(YouTube):
         mp4_without_frames.close()
         os.remove(old_file)
 
-
 class Downloader_YT_Playlist(Playlist):
 
     def __init__(self, playlist_link=None) -> None:
