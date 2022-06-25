@@ -152,9 +152,3 @@ class Downloader_YT_Playlist(Playlist):
         """
         for i in self.playlist.videos:
             return f'Title: {i.title}\n{i.length / 60} minutes \n{i.views} views\nThe author is: {i.author}\n{i.description}'
-
-
-
-
-# c = Downloader_YT_Playlist(playlist_link='https://www.youtube.com/playlist?list=PLU01G0k1_PKe3LKxgAaIAp9rSvMSevRhQ')
-# c.download_all_content_from_playlist_in_mp3()
