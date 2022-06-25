@@ -1,4 +1,3 @@
-from telnetlib import DO
 from pytube import YouTube, Playlist
 from os import *
 import os
