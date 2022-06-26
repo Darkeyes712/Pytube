@@ -146,20 +146,18 @@ class Downloader_YT_Playlist(Playlist):
         
     def get_playlist_info(self):
         """
-        Get information for every video of the playlist. 
+        This function uses the generator approach to returning multiple items from a function.
+            1. Get information for every video of the playlist inside the nested function and create a generated object, using the yiled keyword.
+            2. Use list comprehension on the nested function to aquire all of the results and put them in a string.
+
         """
-        for i in self.playlist.videos:
-            pass
-        #     items = f'Title: {i.title}\n{i.length / 60} minutes \n{i.views} views\nThe author is: {i.author}\n{i.description}'
-        #     list_items = items.split()
-        #     list_of_strings = [''.join(i) for i in list_items]
+        def create_generator_object():
 
-        # return [list_of_strings[0], list_of_strings[1], list_of_strings[2]]
+            for i in self.playlist.videos:
+                yield f'Title: {i.title}\n{i.length / 60} minutes \n{i.views} views\nThe author is: {i.author}\n{i.description}\n\n'
 
-    ### NOTE make this so that it returns the info for all videos, not only 1!!!
+        list_of_items = [''.join(i) for i in create_generator_object()]
+        final_item = ' '.join(list_of_items)
 
-
-
-
-c = Downloader_YT_Playlist(playlist_link='https://www.youtube.com/playlist?list=PLU01G0k1_PKe3LKxgAaIAp9rSvMSevRhQ')
-print(c.get_playlist_info())
+        return final_item  
+            

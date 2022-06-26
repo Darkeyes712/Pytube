@@ -52,7 +52,7 @@ def get_playlist_info():
     """
     url = str(video_link.get())
     d = Downloader_YT_Playlist(url)
-    
+
     return d.get_playlist_info()
 
 def download_high_resolution():
