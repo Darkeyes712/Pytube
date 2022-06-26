@@ -149,7 +149,6 @@ class Downloader_YT_Playlist(Playlist):
         This function uses the generator approach to returning multiple items from a function.
             1. Get information for every video of the playlist inside the nested function and create a generated object, using the yiled keyword.
             2. Use list comprehension on the nested function to aquire all of the results and put them in a string.
-
         """
         def create_generator_object():
 
@@ -160,4 +159,3 @@ class Downloader_YT_Playlist(Playlist):
         final_item = ' '.join(list_of_items)
 
         return final_item  
-            
