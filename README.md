@@ -91,12 +91,17 @@ Here is how to build the application using pyinstaller:
   python -m pack_script
   ```
 
-_For more information on Python, please refer to the [Documentation](https://www.python.org/)
-_For more information on Pyinstaller, please refer to the [Documentation](https://pyinstaller.org/en/stable/)
-_For more information on Tkinter, please refer to the [Documentation](https://docs.python.org/3/library/tkinter.html)
-_For more information on Pytube, please refer to the [Documentation](https://pytube.io/en/latest/)
-_For more information on Moviepy, please refer to the [Documentation](https://zulko.github.io/moviepy/)
-_For more information on Python Threading, please refer to the [Documentation](https://docs.python.org/3/library/threading.html)
+* _For more information on Python, please refer to the [Documentation](https://www.python.org/)
+
+* _For more information on Pyinstaller, please refer to the [Documentation](https://pyinstaller.org/en/stable/)
+
+* _For more information on Tkinter, please refer to the [Documentation](https://docs.python.org/3/library/tkinter.html)
+
+* _For more information on Pytube, please refer to the [Documentation](https://pytube.io/en/latest/)
+
+* _For more information on Moviepy, please refer to the [Documentation](https://zulko.github.io/moviepy/)
+
+* _For more information on Python Threading, please refer to the [Documentation](https://docs.python.org/3/library/threading.html)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
