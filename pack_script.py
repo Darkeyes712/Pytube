@@ -13,6 +13,9 @@ def pack():
     shutil.copytree(source_dir, destination_dir)
 
 def shortcut():
+    """
+    Create a shortcut of an .exe file and paste it at the Desktop directory.
+    """
     desktop = winshell.desktop()
     path = os.path.join(desktop, "youtube_downloader.lnk")
     target = os.path.join(os.getcwd(), 'dist', 'youtube_downloader', 'youtube_downloader.exe')
