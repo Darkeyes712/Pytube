@@ -93,19 +93,11 @@ class Downloader_YT(YouTube):
         current_path = os.path.abspath(path_)
         os.chdir(current_path)
 
-        # Testing
-        cwd = os.getcwd()
-        print(str(cwd))
-
         base, ext = os.path.splitext(file)
         old_file = base + '.mp4'
-        # Testing
-        print(old_file)
 
         base, ext = os.path.splitext(file)
         new_file = base + '.mp3'
-        # Testing
-        print(new_file)
         
         mp4_without_frames = AudioFileClip(os.path.join(current_path, old_file))   
         mp4_without_frames.write_audiofile(os.path.join(current_path, new_file))

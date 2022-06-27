@@ -1,3 +1,4 @@
+from inspect import getcallargs
 from tkinter import *
 from tkinter import messagebox
 from tkinter import filedialog
@@ -5,6 +6,8 @@ from core import Downloader_YT, Downloader_YT_Playlist
 from config import *
 from thread_frm import KThread
 import pygame
+import os
+import sys
 
 # this shit creates the window
 window = Tk()
@@ -49,7 +52,13 @@ def play_music():
     Function loads audio file as background music.
     Function is triggered on button click. 
     """
-    pygame.mixer.music.load('audio/nkg.mp3')
+    def get_script_path():
+        return os.path.dirname(os.path.realpath(sys.argv[0]))
+
+    project_dir = get_script_path()
+    os.chdir(project_dir)
+    print(project_dir)
+    pygame.mixer.music.load(os.path.join(os.getcwd(),'audio/nkg.mp3'))
     pygame.mixer.music.play()
 
 def stop_music():
@@ -179,7 +188,6 @@ button_volume= Button(window,
                         relx=0.1, 
                         rely=0.1, 
                         anchor=CENTER)
-                        # Feature buttons
 button_mute= Button(window,
                     background="red",
                     image=photoimage_mute,
