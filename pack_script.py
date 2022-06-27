@@ -12,6 +12,10 @@ def pack():
     destination_dir = os.path.join(os.getcwd(), 'dist', 'youtube_downloader', 'img')
     shutil.copytree(source_dir, destination_dir)
 
+    source_dir_2 = os.path.join(os.getcwd(), 'bin', 'audio')
+    destination_dir_2 = os.path.join(os.getcwd(), 'dist', 'youtube_downloader', 'audio')
+    shutil.copytree(source_dir_2, destination_dir_2)
+
 def shortcut():
     """
     Create a shortcut of an .exe file and paste it at the Desktop directory.

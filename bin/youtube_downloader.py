@@ -4,6 +4,7 @@ from tkinter import filedialog
 from core import Downloader_YT, Downloader_YT_Playlist
 from config import *
 from thread_frm import KThread
+import pygame
 
 # this shit creates the window
 window = Tk()
@@ -19,6 +20,12 @@ photoimage = photo.subsample(1, 1)
 # Options menu image
 options = PhotoImage(file="img/g.png")
 photoimage_options = options.subsample(1, 1)
+# Volume image
+volume = PhotoImage(file="img/volume.png")
+photoimage_volume = volume.subsample(1, 1)
+# Mute image
+mute = PhotoImage(file="img/mute.png")
+photoimage_mute = mute.subsample(1, 1)
 # Assigning background
 frame_logo = Label(window, image=photoimage).place(anchor=CENTER, relx=0.5, rely=0.5,)
 # Assining string variables
@@ -36,6 +43,20 @@ def clear_text():
     Function clears the entry filed of all text once the Clear Filed button is pressed.
     """
     entry_field.delete(0, END)
+
+def play_music():
+    """
+    Function loads audio file as background music.
+    Function is triggered on button click. 
+    """
+    pygame.mixer.music.load('audio/nkg.mp3')
+    pygame.mixer.music.play()
+
+def stop_music():
+    """
+    Function stops the background music on click. 
+    """
+    pygame.mixer.music.stop()
 
 def get_video_info():
     """
@@ -146,6 +167,31 @@ def download_playlist_audio_only():
     messagebox.showinfo("In Progress!", f"Audio file will be downloaded in {download_path.get()}")
 
 # Feature buttons
+button_volume= Button(window,
+                    background="green",
+                    image=photoimage_volume,
+                    padx=3, 
+                    pady=1, 
+                    font=("Arial", 12, "bold"),
+                    anchor=CENTER,
+                    command=play_music
+                    ).place(
+                        relx=0.1, 
+                        rely=0.1, 
+                        anchor=CENTER)
+                        # Feature buttons
+button_mute= Button(window,
+                    background="red",
+                    image=photoimage_mute,
+                    padx=3, 
+                    pady=1, 
+                    font=("Arial", 12, "bold"),
+                    anchor=CENTER,
+                    command=stop_music
+                    ).place(
+                        relx=0.2, 
+                        rely=0.1, 
+                        anchor=CENTER)
 button_info= Button(window,
                     background="silver",
                     text="Get Video Info",
