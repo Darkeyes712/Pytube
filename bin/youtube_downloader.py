@@ -57,7 +57,6 @@ def play_music():
 
     project_dir = get_script_path()
     os.chdir(project_dir)
-    print(project_dir)
     pygame.mixer.music.load(os.path.join(os.getcwd(),'audio/nkg.mp3'))
     pygame.mixer.music.play()
 
