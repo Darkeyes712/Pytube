@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/Darkeyes712/Pytube">
-    <img src="bin/img/blogo.png" alt="Logo" width="80" height="80">
+    <img src="bin/img/logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Windows Desktop YouTube Downloader App</h3>
