@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/Darkeyes712/Pytube">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="bin/img/burglar.ico" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Windows Desktop YouTube Downloader App</h3>
@@ -86,13 +86,11 @@ Below you can find a list of all major frameworks/libraries used to bootstrap th
 
 Here is how to build the application using pyinstaller: 
   1. Open a terminal windows and type the command:
-    
     ```
     pip install pyinstaller
     ```
 
   2. Open a powershell window (SHIT + Righ Mouse Button) in the directory where the project is located and type the command: 
-    
     ```
     python -m pack_script
     ```
