@@ -51,7 +51,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Description here.
+This project is intended to create a local GUI resource for downloading YouTube videos & audio. The Author of the software does not own any images or other form of art included in it’s creation, hence this product is not to be used for financial profit in any way.  
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -85,11 +85,15 @@ Below you can find a list of all major frameworks/libraries used to bootstrap th
 ## Project-Setup
 
 Here is how to build the application using pyinstaller: 
+  1. Open a terminal windows and type the command:
+    ```
+    pip install pyinstaller
+    ```
 
-1. Open a powershell window (SHIT + Righ Mouse Button) in the directory where the project is located and type the command: 
-  ```
-  python -m pack_script
-  ```
+  2. Open a powershell window (SHIT + Righ Mouse Button) in the directory where the project is located and type the command: 
+    ```
+    python -m pack_script
+    ```
 
 * _For more information on Python, please refer to the [Documentation](https://www.python.org/)
 
