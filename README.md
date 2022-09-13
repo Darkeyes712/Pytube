@@ -86,15 +86,20 @@ Below you can find a list of all major frameworks/libraries used to bootstrap th
 
 Here is how to build the application using pyinstaller: 
   1. Open a terminal windows and type the command:
+    
     ```
     pip install pyinstaller
     ```
 
   2. Open a powershell window (SHIT + Righ Mouse Button) in the directory where the project is located and type the command: 
+    
     ```
     python -m pack_script
     ```
 
+Once the installation process is completed, a Desktop icon of the software will be generated. 
+
+Documentation links: 
 * _For more information on Python, please refer to the [Documentation](https://www.python.org/)
 
 * _For more information on Pyinstaller, please refer to the [Documentation](https://pyinstaller.org/en/stable/)
